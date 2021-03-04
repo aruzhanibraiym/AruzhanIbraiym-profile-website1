@@ -1,6 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
+
+use App\Models\Blog;
+
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +25,13 @@ Route::get('/welcome', function () {
 Route::get('/user', function() {
     return view('user');
 });
+
+Route::get('blog/add', function() {
+    DB::table('blogs')->insert([
+        'name' => 'Aruzhan',
+        'surname' => 'Ibraiym',
+        'age' => 19
+    ]);
+});
+
+Route::get('blog', [BlogController::class, 'index'] );
